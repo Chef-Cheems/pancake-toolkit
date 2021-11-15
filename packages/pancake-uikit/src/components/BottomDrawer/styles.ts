@@ -21,7 +21,8 @@ const UnmountAnimation = keyframes`
 export const DrawerContainer = styled.div<{ isUnmounting: boolean }>`
   width: 100%;
   height: ${window.innerHeight * 0.81}px;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  z-index: 10;
   border-radius: 32px;
   position: fixed;
   animation: ${MountAnimation} 350ms ease forwards;
@@ -41,4 +42,5 @@ export const StyledOverlay = styled.div`
   right: 0;
   background-color: ${({ theme }) => `${theme.colors.text}99`};
   backdrop-filter: blur(1px);
+  z-index: 10;
 `;

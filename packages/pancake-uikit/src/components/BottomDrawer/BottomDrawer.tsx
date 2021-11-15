@@ -6,6 +6,7 @@ import { DrawerContainer, StyledOverlay } from "./styles";
 import { CloseIcon } from "../Svg";
 import { Box } from "../Box";
 import { IconButton } from "../Button";
+import { useMatchBreakpoints } from "../..";
 
 const portalRoot = document.getElementById("portal-root");
 
@@ -18,12 +19,17 @@ interface BottomDrawerProps {
 const BottomDrawer: React.FC<BottomDrawerProps> = ({ content, isOpen, setIsOpen }) => {
   const ref = useRef<HTMLDivElement>(null);
   const shouldRender = useDelayedUnmount(isOpen, 350);
+  const { isMobile } = useMatchBreakpoints();
 
   useOnClickOutside(ref, () => setIsOpen(false));
 
-  if (!shouldRender) {
+  if (!shouldRender || !isMobile) {
+    document.body.style.overflow = "visible";
     return null;
   }
+
+  // Prevent scrolling of the page when drawer is shown
+  document.body.style.overflow = "hidden";
 
   return (
     <>

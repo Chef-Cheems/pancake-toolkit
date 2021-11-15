@@ -18,7 +18,7 @@ import { links, userMenulinks } from "./config";
 import { footerLinks } from "../../components/Footer/config";
 import Menu from "./Menu";
 import { Language, NavProps } from "./types";
-import BottomDrawer from "../../components/BottomDrawer";
+import BottomDrawer from "../../components/BottomDrawer/BottomDrawer";
 
 export default {
   title: "Widgets/Menu",
